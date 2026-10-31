@@ -8,14 +8,18 @@ sounds.forEach(function (sound) {
 	btns.appendChild(button);
 
 	button.addEventListener("click", () => {
-		const currentAudio = new CurrentAudio("sounds/" + sound + ".mp3");
+		currentAudio = new Audio("sounds/" + sound + ".mp3");
 		currentAudio.play();
 	});
 });
 
 const stop = document.querySelector(".stop");
 
+
 stop.addEventListener("click", () => {
-	currentAudio.pause();
-	currentAudio.currentTime = 0;
-});
+	if (currentAudio) {
+		currentAudio.pause();
+		currentAudio.currentTime = 0;
+	}
+});	
+
